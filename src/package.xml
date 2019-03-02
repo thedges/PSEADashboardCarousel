@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>PSEADashboardCarouselController</members>
+        <members>PSEADashboardCarouselPicklist</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>PSEADashboardCarouselVF</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>PSEADashboardCarousel</members>
+        <members>PSEADashboardCarouselApp</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>PSEADashboardCarouselItem__c</members>
+        <members>PSEADashboardCarousel__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>PSEADashboardCarousel__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>PSEADashboardCarouselItem__c-PSEADashboardCarouselItem Layout</members>
+        <members>PSEADashboardCarousel__c-PSEADashboardCarousel Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>PSEADashboardCarousel</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>PSEADashboardCarousel</members>
+        <name>StaticResource</name>
+    </types>
+    <version>42.0</version>
+</Package>

@@ -1,0 +1,65 @@
+<aura:component controller="PSEADashboardCarouselController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+                access="global">
+    <ltng:require styles="{!$Resource.PSEADashboardCarousel + '/flickity.min.css'}"
+                  scripts="{!$Resource.PSEADashboardCarousel + '/flickity.pkgd.min.js'}" afterScriptsLoaded="{!c.jsLoaded}" />
+    
+    <aura:attribute name="configId" type="String" default="" />
+    <aura:attribute name="configName" type="String" default="" />
+    
+    <aura:attribute name="height" type="String" default="900" />
+    <aura:attribute name="showTitle" type="Boolean" default="true" />
+    <aura:attribute name="playing" type="Boolean" default="true" />
+    <aura:attribute name="fullscreen" type="Boolean" default="false" />
+    <aura:attribute name="flkty" type="Object" />
+    
+    <aura:attribute name="config" type="Object" />
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <aura:attribute name="errorMsg" type="String" />
+    <aura:attribute name="rendered" type="Boolean" default="false" />
+    
+    <aura:handler name="render" value="{!this}" action="{!c.onRender}" />
+    
+    <div class="slds-card">
+        <aura:if isTrue="{!v.showSpinner}">
+            <lightning:spinner variant="brand" size="large" />
+        </aura:if>
+        <aura:if isTrue="{!v.errorMsg.length > 0}">
+            <ui:message title="Error" severity="error" closable="true" click="{!c.closeError}">
+                {!v.errorMsg}
+            </ui:message>
+        </aura:if>
+        <div id="carouselContainer">
+            <aura:if isTrue="{!v.config != null}">
+                <div id="main-carousel">
+                    <aura:iteration items="{!v.config.items}" var="item">
+                        <div class="carousel-cell">
+                            <wave:waveDashboard developerName="{!item.dashboardName}" filter="{!item.filter}" showTitle="{!v.showTitle}"
+                                                height="{!v.height}" />
+                        </div>
+                    </aura:iteration>
+                </div>
+            </aura:if>
+            <div aura:id="controlDiv" id="controlDiv" class="hide">
+                <aura:if isTrue="{!not(v.playing)}">
+                    <div class="imageDiv">
+                        <img src="{!$Resource.PSEADashboardCarousel + '/play.png'}" height="18" width="18"
+                             onclick="{!c.playPlayer}" />
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!v.playing}">
+                    <div class="imageDiv">
+                        <img src="{!$Resource.PSEADashboardCarousel + '/pause.png'}" height="18" width="18"
+                             onclick="{!c.stopPlayer}" />
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!not(v.fullscreen)}">
+                    <div class="imageDiv slds-p-top_xxx-small">
+                        <img src="{!$Resource.PSEADashboardCarousel + '/newwindow.png'}" height="17" width="17"
+                             onclick="{!c.newWindow}" />
+                    </div>
+                </aura:if>
+            </div>
+        </div>
+    </div>
+</aura:component>

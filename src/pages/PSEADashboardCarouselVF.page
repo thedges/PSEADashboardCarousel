@@ -1,0 +1,71 @@
+<apex:page showheader="false" sidebar="false" standardStylesheets="false">
+    <apex:includeLightning />
+    <style>
+      #vfcontainer {
+	      position: relative;
+      }
+
+      #vfcontrolDiv {
+	      position: absolute; top: 22px; right: 1px; z-index: 100; padding: 3px; 
+      }
+
+      .imageDiv {
+	      vertical-align:middle; 
+        text-align:center;
+      }
+    </style>
+    <script>
+      function fullscreen()
+      {
+        console.log('pressed...');
+        var elem = document.getElementById("vfapp"); 
+
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+          elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+          elem.msRequestFullscreen();
+        }
+      }
+    </script>
+    <body>
+
+        <div id="vfcontainer">
+          <div id="vfapp" />
+          <div id="vfcontrolDiv">
+            <div class="imageDiv">
+                <img src="{!$Resource.PSEADashboardCarousel + '/fullscreen.png'}" height="18" width="18" onclick="fullscreen();" />
+            </div>
+          </div>
+        </div>
+
+        <script>
+          var tmpStr = '{!$CurrentPage.URL}';
+          var params = {};
+          tmpStr.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+            params[key] = value;
+          });
+
+          var height = window.screen.height;
+        
+          $Lightning.use("c:PSEADashboardCarouselApp",
+            function()
+            {
+              $Lightning.createComponent(
+                "c:PSEADashboardCarousel",
+                {"configId": params['configId'],
+                  "height": height},
+                  "vfapp",
+                  function(cmp){
+                    console.log('done');
+                  }
+              );
+            }
+          )
+        
+        </script>
+    </body>
+</apex:page>

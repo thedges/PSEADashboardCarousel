@@ -1,0 +1,30 @@
+.THIS .carousel {
+    background: #FAFAFA;
+}
+
+.THIS .carousel-cell {
+    width: 100%; /* full width */
+    heightX: 750px;
+    backgroundX: #222;
+    /* center images in cells with flexbox */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.THIS .carousel-cell img {
+    display: block;
+    max-height: 100%;
+}
+
+.THIS .flickity-page-dots {
+    bottom: 15px;
+}
+
+.THIS #carouselContainer {
+    position: relative;
+}
+
+.THIS #controlDiv {
+    position: absolute; top: 0px; right: 0px; z-index: 5; padding: 3px; 
+}

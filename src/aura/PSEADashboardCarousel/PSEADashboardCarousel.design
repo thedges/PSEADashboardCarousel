@@ -1,0 +1,4 @@
+<design:component>
+    <design:attribute name="configId" label="Configuration Name" datasource="apex://PSEADashboardCarouselPicklist"/>
+    <design:attribute name="height" label="Height in pixels" />
+</design:component>
