@@ -24,10 +24,10 @@ This component provides ability for a configured list of Einstein Analytic dashb
 
 ![alt text](https://github.com/thedges/PSEADashboardCarousel/blob/master/PSEADashboardCarousel.png "PSEADashboardCarousel Controls")
 1. This area provides 4 primary controls which will show based current state of carousel:
-   * 
-   * 
-   * 
-   * 
+   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/pause.png"/> 
+   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/play.png"/> 
+   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/launch.png"/> 
+   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/fullscreen.png"/>
 2. Move the carousel to the left (selecting this automatically pauses the carousel)
 3. Move the carousel to the right (selecting this automatically pauses the carousel)
 4. Pick specific a specific slide to show (selecting a slide automatically pauses the carousel)
