@@ -18,7 +18,7 @@ This component provides ability for a configured list of Einstein Analytic dashb
 2. PSEADashboardCarouselItem
    * <b>Dashboard Name</b> - the developer name of the Einstein Analytics dashboard
    * <b>Page ID</b> - provide a page id if you want a specific page selected for the dashboard
-   * <b>Filter</b> - provide a filter string if you want to dynamically filter your dashboard. Currently component only supports one substitution variable. Use the keyword '<<USER_ID>>' in your filter string anywhere that you want the current user id subsituted.
+   * <b>Filter</b> - provide a filter string if you want to dynamically filter your dashboard. Currently component only supports one substitution variable. Use the keyword '<<USER_ID>>' in your filter string anywhere that you want the current user id substituted.
 
 <b>To use the component, perform the following steps:</b>
 1. Install the component using the '<b>Deploy to Salesforce</b>' button below
