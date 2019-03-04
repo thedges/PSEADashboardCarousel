@@ -10,6 +10,7 @@
     <aura:attribute name="height" type="String" default="900" />
     <aura:attribute name="showTitle" type="Boolean" default="true" />
     <aura:attribute name="playing" type="Boolean" default="true" />
+    <aura:attribute name="refreshOnPause" type="Boolean" default="false" />
     <aura:attribute name="fullscreen" type="Boolean" default="false" />
     <aura:attribute name="flkty" type="Object" />
     
@@ -30,7 +31,7 @@
             </ui:message>
         </aura:if>
         <div id="carouselContainer">
-            <aura:if isTrue="{!v.config != null}">
+            <aura:if isTrue="{!and(v.config != null, v.config.items != null)}">
                 <div id="main-carousel">
                     <aura:iteration items="{!v.config.items}" var="item">
                         <div class="carousel-cell">
@@ -43,20 +44,17 @@
             <div aura:id="controlDiv" id="controlDiv" class="hide">
                 <aura:if isTrue="{!not(v.playing)}">
                     <div class="imageDiv">
-                        <img src="{!$Resource.PSEADashboardCarousel + '/play.png'}" height="18" width="18"
-                             onclick="{!c.playPlayer}" />
+                        <img src="{!$Resource.PSEADashboardCarousel + '/play.png'}" height="18" width="18" onclick="{!c.playPlayer}" />
                     </div>
                 </aura:if>
                 <aura:if isTrue="{!v.playing}">
                     <div class="imageDiv">
-                        <img src="{!$Resource.PSEADashboardCarousel + '/pause.png'}" height="18" width="18"
-                             onclick="{!c.stopPlayer}" />
+                        <img src="{!$Resource.PSEADashboardCarousel + '/pause.png'}" height="18" width="18" onclick="{!c.stopPlayer}" />
                     </div>
                 </aura:if>
                 <aura:if isTrue="{!not(v.fullscreen)}">
                     <div class="imageDiv slds-p-top_xxx-small">
-                        <img src="{!$Resource.PSEADashboardCarousel + '/newwindow.png'}" height="17" width="17"
-                             onclick="{!c.newWindow}" />
+                        <img src="{!$Resource.PSEADashboardCarousel + '/newwindow.png'}" height="17" width="17" onclick="{!c.newWindow}" />
                     </div>
                 </aura:if>
             </div>

@@ -13,9 +13,8 @@
             component.set('v.rendered', true);
             
             console.log('page is loaded');
-            var ref = config.refreshInterval*1000;
-            console.log('refreshInterval=' + ref);
-            //var elem = document.getElementById('main-carousel');
+            var ref = config.transitionInterval*1000;
+
             var flkty = new Flickity(elem, {
                 "autoPlay": 15000,
                 "pauseAutoPlayOnHover": false
@@ -38,10 +37,12 @@
                 var indx = flkty.selectedIndex;
                 console.log('settle indx=' + indx);
                 var config = component.get('v.config');
-                var item = config.items[indx];
-
-                if (item.pageId != null)
+                if (config != null && config.items != null && config.items.length > 0)
                 {
+                  var item = config.items[indx];
+
+                  if (item.pageId != null)
+                  {
                     var evt = $A.get('e.wave:pageChange');
         
                     var evtParams = {};
@@ -49,6 +50,7 @@
                     evtParams['devName'] = item.dashboardName;
                     evt.setParams(evtParams);
                     evt.fire();
+                  }
                 }
             });
             
@@ -61,6 +63,27 @@
                     component.set('v.playing', false);
                 }
             });
+
+            setTimeout(function() {
+                console.log('refresh data event...');
+                if (component.get("v.playing"))
+                {
+                  helper.refresh(component, flkty);
+                }
+                else
+                {
+                  component.set('v.refreshOnPause', true);
+                }
+                /*
+                flkty.destroy();
+                var tmpconfig = component.get("v.config");
+                component.set("v.config", null);
+                component.set("v.rendered", false);
+                component.set("v.config", tmpconfig);
+                //helper.getConfig(component);
+                */
+                
+            }, config.refreshInterval*1000);
         }
     },
     onLoad: function (component, event, helper) {
@@ -71,12 +94,16 @@
         window.open('/apex/PSEADashboardCarouselVF?configId=' + config.configId, '_blank');
     },
     playPlayer: function (component, event, helper) {
-        var flkty = component.get('v.flkty');
         window.flkty.playPlayer();
         component.set("v.playing", true);
+
+        if (component.get("v.refreshOnPause"))
+        {
+            component.set("v.refreshOnPause",false);
+            helper.refresh(component, window.flkty);
+        }
     },
     stopPlayer: function (component, event, helper) {
-        var flkty = component.get('v.flkty');
         window.flkty.pausePlayer();
         component.set("v.playing", false);
     },

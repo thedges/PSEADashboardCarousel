@@ -2,19 +2,24 @@
     getConfig : function(component) {
         var self = this;
         
+        //console.log('getConfig called...');
+        var configId = component.get("v.configId");
+        if (configId)
+        {
         //////////////////////
         // setup apex query //
         //////////////////////
         var action = component.get("c.getConfig");
         
         action.setParams({
-            "configId": component.get("v.configId")
+            "configId": configId
         });
         
         /////////////////////
         // handle callback //
         /////////////////////
         action.setCallback(component, function(response) {
+            console.log('getConfig callback...');
             if (response.getState() === 'SUCCESS') {
                 var resp = response.getReturnValue();
                 console.log('response=' + resp);
@@ -27,6 +32,7 @@
         });
         
         $A.enqueueAction(action);
+      }
     },
     handleErrors: function (component, errors) {
         var errorMsg;
@@ -47,5 +53,12 @@
     },
     hideSpinner: function (component) {
         component.set('v.showSpinner', false);
+    },
+    refresh: function (component, flkty) {
+        flkty.destroy();
+        var tmpconfig = component.get("v.config");
+        component.set("v.config", null);
+        component.set("v.rendered", false);
+        component.set("v.config", tmpconfig);
     }
 })
