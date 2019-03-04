@@ -24,10 +24,10 @@ This component provides ability for a configured list of Einstein Analytic dashb
 
 ![alt text](https://github.com/thedges/PSEADashboardCarousel/blob/master/PSEADashboardCarousel.png "PSEADashboardCarousel Controls")
 1. This area provides 4 primary controls which will show based current state of carousel:
-   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/pause.png" height="40"/> 
-   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/play.png" height="40"/> 
-   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/launch.png" height="40"/> 
-   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/fullscreen.png" height="40"/>
+   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/pause.png" height="25"/> - pause the carousel
+   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/play.png" height="25"/> - un-pause or play the carousel
+   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/launch.png" height="25"/> - launch out to a plain Visualforce page (ultimately you can go full screen)
+   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/fullscreen.png" height="25"/> - show component in fullscreen mode; primarily used for command center or second monitor
 2. Move the carousel to the left (selecting this automatically pauses the carousel)
 3. Move the carousel to the right (selecting this automatically pauses the carousel)
 4. Pick specific a specific slide to show (selecting a slide automatically pauses the carousel)
