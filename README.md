@@ -28,8 +28,8 @@ This component provides ability for a configured list of Einstein Analytic dashb
    * <b>Transition Interval</b> - the time in seconds to transition between dashboard 
    * <b>Refresh Interval</b> - the time in minutes to automatically refresh the carousel with new dashboard data. Note, the refresh does not occur while in 'pause' mode. If a refresh is detected while paused, the carousel component will perform the refresh when use selected 'play' option.
 2. PSEADashboardCarouselItem
-   * <b>Dashboard Name</b> - the developer name of the Einstein Analytics dashboard
-   * <b>Page ID</b> - provide a page id if you want a specific page selected for the dashboard
+   * <b>Dashboard Name</b> - the developer name of the Einstein Analytics dashboard. Currently you need to use Workbench to query your dashboards and get the actual developer name.
+   * <b>Page ID</b> - provide a page id if you want a specific page selected for the dashboard. Access the dashboard JSON to get this page id.
    * <b>Filter</b> - provide a filter string if you want to dynamically filter your dashboard. Currently component only supports one substitution variable. Use the keyword '<<USER_ID>>' in your filter string anywhere that you want the current user id substituted.
 
 
