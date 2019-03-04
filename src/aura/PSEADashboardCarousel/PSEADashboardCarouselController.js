@@ -83,7 +83,7 @@
                 //helper.getConfig(component);
                 */
                 
-            }, config.refreshInterval*1000);
+            }, config.refreshInterval*60*1000);
         }
     },
     onLoad: function (component, event, helper) {
