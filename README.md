@@ -33,7 +33,6 @@ This component provides ability for a configured list of Einstein Analytic dashb
    * <b>Filter</b> - provide a filter string if you want to dynamically filter your dashboard. Currently component only supports one substitution variable. Use the keyword '<<USER_ID>>' in your filter string anywhere that you want the current user id substituted.
 
 
-
 <b>To use the component, perform the following steps:</b>
 1. Install the component using the '<b>Deploy to Salesforce</b>' button below
 2. Assign the '<b>PSEADashboardCarousel</b>' permission set to the users that will utilize the component
@@ -42,6 +41,8 @@ This component provides ability for a configured list of Einstein Analytic dashb
    * Next create 1 or more PSEADashboardCarouselItem records to specify the dashboards to include in your carousel
 4. For the page that you want to add the carousel component to, edit the page and use Lightning App Builder to add the component to the page. For the component configuration, select the configuration name you provided in previous step and specify a height for the component. Save the page and your component is ready. 
 
+<b>WARNINGS:</b>
+* If you are using a dashboard that has multiple pages, you need to specify the page ID for each PSEADashboardCarouselItem record entry. If you do not specify page ID on each record, then the dashboard will show the page of the last one shown in the carousel.
 
 <a href="https://githubsfdeploy.herokuapp.com">
   <img alt="Deploy to Salesforce"
