@@ -16,7 +16,12 @@ public class PSEADashboardCarouselController {
 
             for (PSEADashboardCarouselItem__c item : items)
             {
-                config.addItem(item.Dashboard_Name__c, item.Page_ID__c, item.Filter__c);
+                String filter = item.Filter__c;
+                if (filter != null)
+                {
+                    filter = filter.replaceAll('<<USER_ID>>', UserInfo.getUserId());
+                }
+                config.addItem(item.Dashboard_Name__c, item.Page_ID__c, filter);
             }
 
 System.debug(JSON.serialize(config));
