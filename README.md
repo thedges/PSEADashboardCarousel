@@ -26,7 +26,7 @@ This component provides ability for a configured list of Einstein Analytic dashb
 3. Navigate to the <b>PSEADashboardCarousel</b> tab and create a carousel configuration. 
    * First create a PSEADashboardCarousel record to define your configuration
    * Next create 1 or more PSEADashboardCarouselItem records to specify the dashboards to include in your carousel
-4. For the page that you want to use the carousel component for, edit the page and use Lightning App Builder to add the component to the page. For the component configuration, select the configuration name you provided in previous step and specify a height for the component. Save the page and your component is ready. 
+4. For the page that you want to add the carousel component to, edit the page and use Lightning App Builder to add the component to the page. For the component configuration, select the configuration name you provided in previous step and specify a height for the component. Save the page and your component is ready. 
 
 
 <a href="https://githubsfdeploy.herokuapp.com">
