@@ -20,6 +20,18 @@ This component provides ability for a configured list of Einstein Analytic dashb
    * <b>Page ID</b> - provide a page id if you want a specific page selected for the dashboard
    * <b>Filter</b> - provide a filter string if you want to dynamically filter your dashboard. Currently component only supports one substitution variable. Use the keyword '<<USER_ID>>' in your filter string anywhere that you want the current user id substituted.
 
+<b>The following controls exist for the component:</b>
+
+![alt text](https://github.com/thedges/PSEADashboardCarousel/blob/master/PSEADashboardCarousel.png "PSEADashboardCarousel Controls")
+1. This area provides 4 primary controls which will show based current state of carousel:
+   * 
+   * 
+   * 
+   * 
+2. Move the carousel to the left (selecting this automatically pauses the carousel)
+3. Move the carousel to the right (selecting this automatically pauses the carousel)
+4. Pick specific a specific slide to show (selecting a slide automatically pauses the carousel)
+
 <b>To use the component, perform the following steps:</b>
 1. Install the component using the '<b>Deploy to Salesforce</b>' button below
 2. Assign the '<b>PSEADashboardCarousel</b>' permission set to the users that will utilize the component
