@@ -24,6 +24,10 @@
         <name>CustomTab</name>
     </types>
     <types>
+        <members>PSEADashboardCarouselItem_Record_Page</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
         <members>PSEADashboardCarouselItem__c-PSEADashboardCarouselItem Layout</members>
         <members>PSEADashboardCarousel__c-PSEADashboardCarousel Layout</members>
         <name>Layout</name>

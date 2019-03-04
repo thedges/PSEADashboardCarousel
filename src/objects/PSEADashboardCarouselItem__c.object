@@ -38,7 +38,11 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>PSEADashboardCarouselItem_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
@@ -66,7 +70,7 @@
     <fields>
         <fullName>Filter__c</fullName>
         <externalId>false</externalId>
-        <label>Filter</label>
+        <label>JSON Filter</label>
         <length>5000</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
