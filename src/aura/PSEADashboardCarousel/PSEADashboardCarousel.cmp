@@ -9,6 +9,7 @@
     
     <aura:attribute name="height" type="String" default="900" />
     <aura:attribute name="showTitle" type="Boolean" default="true" />
+    <aura:attribute name="showHeader" type="Boolean" default="true" />
     <aura:attribute name="playing" type="Boolean" default="true" />
     <aura:attribute name="refreshOnPause" type="Boolean" default="false" />
     <aura:attribute name="fullscreen" type="Boolean" default="false" />
@@ -36,7 +37,7 @@
                     <aura:iteration items="{!v.config.items}" var="item">
                         <div class="carousel-cell">
                             <wave:waveDashboard developerName="{!item.dashboardName}" filter="{!item.filter}" showTitle="{!v.showTitle}"
-                                                height="{!v.height}" />
+                                                showHeader="{!v.showHeader}" height="{!v.height}" />
                         </div>
                     </aura:iteration>
                 </div>
