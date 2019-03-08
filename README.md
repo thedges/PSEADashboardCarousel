@@ -51,7 +51,7 @@ Here is description of the usage for the editor:
 2. For each carousel row in top table, you have following 3 options:
    * first is to edit the carousel configuration
    * second is for deleting that carousel configuration
-   * third is to get the list of carousel items for that carousel config. This will fill out the bottom table.
+   * third is to retrieve the list of carousel items for that carousel configuration. This will fill out the bottom table.
 3. The bottom section of editor is for configuring the items (i.e. dashboards) to show in the carousel. This are provides following 2 options:
    * first is for creating new carousel items
    * second is used to send the sort order to the database. Normally order is set as you interact with the editor but if you entered data directly in to the objects using standard screens, you can commit the order to database using this option.
