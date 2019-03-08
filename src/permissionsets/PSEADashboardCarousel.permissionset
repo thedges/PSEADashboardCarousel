@@ -58,10 +58,6 @@
         <enabled>true</enabled>
     </pageAccesses>
     <tabSettings>
-        <tab>PSEADashboardCarouselItem__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
         <tab>PSEADashboardCarousel_Config</tab>
         <visibility>Visible</visibility>
     </tabSettings>

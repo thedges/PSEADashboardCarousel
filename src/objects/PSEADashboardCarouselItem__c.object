@@ -134,11 +134,6 @@
         <unique>false</unique>
     </fields>
     <label>PSEADashboardCarouselItem</label>
-    <listViews>
-        <fullName>All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>CI-{000000}</displayFormat>
         <label>PSEADashboardCarouselItem ID</label>
