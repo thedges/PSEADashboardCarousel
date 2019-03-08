@@ -26,10 +26,7 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <content>PSEADashboardCarouselItemAction</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>LightningComponent</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>SaveEdit</actionName>

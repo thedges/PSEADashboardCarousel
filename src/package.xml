@@ -22,6 +22,7 @@
         <name>CustomObject</name>
     </types>
     <types>
+        <members>PSEADashboardCarousel_Config</members>
         <members>PSEADashboardCarousel__c</members>
         <name>CustomTab</name>
     </types>
