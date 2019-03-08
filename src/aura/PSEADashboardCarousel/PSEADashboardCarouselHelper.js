@@ -27,7 +27,7 @@
             }
             else
             {
-                self.handleErrors(response.getError());
+                self.handleErrors(component, response.getError());
             }
         }));
         

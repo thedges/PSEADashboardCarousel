@@ -33,7 +33,7 @@
         </aura:if>
         <div id="carouselContainer">
             <aura:if isTrue="{!and(v.config != null, v.config.items != null)}">
-                <div id="main-carousel">
+                <div id="{!'main-carousel-' + globalId}">
                     <aura:iteration items="{!v.config.items}" var="item">
                         <div class="carousel-cell">
                             <wave:waveDashboard developerName="{!item.dashboardName}" filter="{!item.filter}" showTitle="{!v.showTitle}"

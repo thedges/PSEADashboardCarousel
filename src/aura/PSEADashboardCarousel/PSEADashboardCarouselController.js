@@ -4,9 +4,10 @@
     },
     onRender: function (component, event, helper) {
         console.log('onRender...');
+        var globalId = component.getGlobalId();
         var config = component.get("v.config");
         
-        var elem = document.getElementById('main-carousel');
+        var elem = document.getElementById('main-carousel-' + globalId);
         console.log('elem=' + elem);
         
         if (elem != null && !component.get('v.rendered')) {
