@@ -201,7 +201,7 @@
                                     onchange="{!c.onPageSelect}">
                                     <option value="">-- Select Page --</option>
                                     <aura:iteration items="{!v.pageList}" var="pg">
-                                        <option value="{!pg.name}" selected="{!pg.name == v.item.pageId}">{!pg.label}
+                                        <option value="{!pg.id}" selected="{!pg.id == v.item.pageId}">{!pg.label}
                                         </option>
                                     </aura:iteration>
                                 </lightning:select>

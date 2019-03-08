@@ -65,9 +65,9 @@
 
 		var pageList = component.get("v.pageList");
 		var item = component.get("v.item");
-		//var dashboardName = component.get("v.dashboardName");
+
 		pageList.forEach(function (pg) {
-			if (db.name == item.dashboardName) {
+			if (pg.id == item.pageId) {
 				item.pageLabel = pg.label;
 				component.set('v.item', item);
 				component.set('v.pageId', pg.id);
@@ -138,7 +138,7 @@
 		helper.saveCarousel(component);
 	},
 	handleItemAdd: function (component, event, helper) {
-		component.set("v.item", { "id": null, "carouselId": component.get('v.carousel').id, "dashboardName": null, "pageId": null, "filter": null });
+		component.set("v.item", { "id": null, "carouselId": component.get('v.carousel').id, "dashboardLabel": null, "dashboardName": null, "pageLabel": null, "pageId": null, "filter": null });
 		helper.showEditItem(component);
 	},
 	handleItemEdit: function (component, event, helper) {

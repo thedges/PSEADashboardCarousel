@@ -110,9 +110,7 @@
                 if (data.state && data.state.gridLayouts && data.state.gridLayouts[0] && data.state.gridLayouts[0].pages) {
                     data.state.gridLayouts[0].pages.forEach(function (page) {
                         if (page.label && page.label != 'Untitled') {
-                            console.log('page.label=' + page.label);
-                            console.log('  > page.name=' + page.name);
-                            pageList.push({ "label": page.label, "name": page.name });
+                            pageList.push({ "label": page.label, "id": page.name });
                         }
                     });
                 }

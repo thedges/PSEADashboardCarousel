@@ -6,7 +6,10 @@ public class PSEADashboardCarouselController {
         try
         {      
             PSEADashboardCarousel__c car = [SELECT Id, Name__c, Refresh_Interval__c, Transition_Interval__c FROM PSEADashboardCarousel__c WHERE Id = :configId LIMIT 1];
-            List<PSEADashboardCarouselItem__c> items = [SELECT Id, Dashboard_Name__c, Page_ID__c, Filter__c FROM PSEADashboardCarouselItem__c WHERE PSEADashboardCarousel__c = :car.Id];
+            List<PSEADashboardCarouselItem__c> items = [SELECT Id, Order__c, Dashboard_Name__c, Page_ID__c, Filter__c 
+                                                          FROM PSEADashboardCarouselItem__c 
+                                                         WHERE PSEADashboardCarousel__c = :car.Id
+                                                         ORDER BY Order__c ASC];
  
             Config config = new Config();
             config.configId = car.Id;
