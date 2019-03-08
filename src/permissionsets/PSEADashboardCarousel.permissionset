@@ -10,13 +10,28 @@
     </classAccesses>
     <fieldPermissions>
         <editable>true</editable>
+        <field>PSEADashboardCarouselItem__c.Dashboard_Label__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>PSEADashboardCarouselItem__c.Filter__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PSEADashboardCarouselItem__c.Order__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>PSEADashboardCarouselItem__c.Page_ID__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PSEADashboardCarouselItem__c.Page_Label__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>PSEADashboardCarousel</label>
@@ -42,6 +57,14 @@
         <apexPage>PSEADashboardCarouselVF</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
+    <tabSettings>
+        <tab>PSEADashboardCarouselItem__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>PSEADashboardCarousel_Config</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
     <tabSettings>
         <tab>PSEADashboardCarousel__c</tab>
         <visibility>Visible</visibility>

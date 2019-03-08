@@ -1,0 +1,287 @@
+<aura:component controller="PSEADashboardCarouselConfigController"
+    implements="force:appHostable,flexipage:availableForAllPageTypes" access="global">
+
+    <aura:attribute name="carouselList" type="List" />
+    <!--
+    <aura:attribute name="carouselId" type="String" />
+    -->
+    <aura:attribute name="carousel" type="Object" />
+    <aura:attribute name="itemList" type="List" />
+    <aura:attribute name="itemId" type="String" />
+    <aura:attribute name="item" type="Object" />
+
+    <aura:attribute name="dashboardList" type="List" />
+    <aura:attribute name="dashboardName" type="String" />
+    <aura:attribute name="dashboardId" type="String" />
+    <aura:attribute name="pageList" type="List" />
+    <aura:attribute name="pageId" type="String" />
+
+    <aura:attribute name="isEditCarousel" type="Boolean" default="false" />
+    <aura:attribute name="isDeleteCarousel" type="Boolean" default="false" />
+    <aura:attribute name="isEditItem" type="Boolean" default="false" />
+    <aura:attribute name="isDeleteItem" type="Boolean" default="false" />
+
+
+
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+    <wave:sdk aura:id="sdk" />
+
+    <div class="slds-card">
+        <div class="wrapper slds-p-around_medium">
+            <div class="header">
+                PSEADashboardCarousel Configuration Editor
+            </div>
+
+            <div class="section-label">
+                Carousels:
+                <lightning:buttonIcon iconName="utility:new" variant="bare" onclick="{! c.handleCarouselAdd }"
+                    alternativeText="Create new carousel config" />
+                <lightning:buttonIcon iconName="utility:refresh" variant="bare" onclick="{! c.handleCarouselRefresh}"
+                    alternativeText="Refresh carousel config list" />
+            </div>
+            <table
+                class="slds-table slds-table--bordered slds-no-row-hover slds-wrap slds-table_cell-buffer slds-max-medium-table_stacked-horizontal">
+                <thead>
+                    <tr class="slds-has-flexi-truncate">
+                        <th scope="col" style="width:50px">
+                            <div class="slds-truncate" id="actions"></div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" id="name">Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" id="transitionInterval">Transition Interval (sec)</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" id="refreshInterval">Refresh Interval (min)</div>
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.carouselList}" var="record" indexVar="idx">
+                        <tr class="slds-hint-parent slds-has-flexi-truncate">
+                            <td data-label="actions" style="width:50px">
+                                <lightning:buttonIcon name="{!idx}" iconName="utility:edit" variant="bare"
+                                    onclick="{! c.handleCarouselEdit }" alternativeText="Edit this carousel config" />
+                                <lightning:buttonIcon name="{!idx}" iconName="utility:clear" variant="bare"
+                                    onclick="{! c.handleCarouselDelete }"
+                                    alternativeText="Delete this carousel config" />
+                                <lightning:buttonIcon name="{!idx}" iconName="utility:rows" variant="bare"
+                                    onclick="{! c.handleCarouselItems }"
+                                    alternativeText="Show list of carousel items in table below" />
+                            </td>
+                            <td data-label="{!record.name}">{!record.name}</td>
+                            <td data-label="{!record.transitionInterval}">{!record.transitionInterval}</td>
+                            <td data-label="{!record.refreshInterval}">{!record.refreshInterval}</td>
+
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+
+            <div class="section-label slds-p-top_large">
+                Carousel Items [{!v.carousel.name}]:
+                <lightning:buttonIcon iconName="utility:new" variant="bare" onclick="{! c.handleItemAdd }"
+                    alternativeText="Create new carousel item" />
+                <aura:if isTrue="{!and(v.itemList != null, v.itemList.length > 0)}">
+                  <lightning:buttonIcon iconName="utility:richtextnumberedlist" variant="bare"
+                      onclick="{! c.handleItemSort }" alternativeText="Set the order of items as defined in the table" />
+                </aura:if>
+            </div>
+            <table
+                class="slds-table slds-table--bordered slds-no-row-hover slds-wrap slds-table_cell-buffer slds-max-medium-table_stacked-horizontal">
+                <thead>
+                    <tr class="slds-has-flexi-truncate">
+                        <th scope="col" style="width:86px">
+                            <div class="slds-truncate" id="actions"></div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" id="name">Dashboard Label</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" id="name">Dashboard Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" id="pageLabel">Page Label</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" id="pageId">Page ID</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.itemList}" var="item" indexVar="idx">
+                        <tr class="slds-hint-parent slds-has-flexi-truncate">
+                            <td data-label="actions" style="width:86px">
+                                <lightning:buttonIcon name="{!idx}" iconName="utility:edit" variant="bare"
+                                    onclick="{! c.handleItemEdit }" alternativeText="Edit this carousel item" />
+                                <lightning:buttonIcon name="{!idx}" iconName="utility:clear" variant="bare"
+                                    onclick="{! c.handleItemDelete }" alternativeText="Delete this carousel item" />
+                                <lightning:buttonIcon name="{!idx}" iconName="utility:down" variant="bare"
+                                    onclick="{! c.handleItemDown }"
+                                    alternativeText="Move this carousel item down in the order" />
+                                <lightning:buttonIcon name="{!idx}" iconName="utility:up" variant="bare"
+                                    onclick="{! c.handleItemUp }"
+                                    alternativeText="Move this carousel item up in the order" />
+                            </td>
+                            <td data-label="{!item.name}">{!item.dashboardLabel}</td>
+                            <td data-label="{!item.name}">{!item.dashboardName}</td>
+                            <td data-label="{!item.pageLabel}">{!item.pageLabel}</td>
+                            <td data-label="{!item.pageId}">{!item.pageId}</td>
+
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+
+
+            <aura:if isTrue="{!v.isEditCarousel}">
+                <!--###### MODAL BOX Start######-->
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <!-- ###### MODAL BOX HEADER Start ######-->
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeCarouselModal }"
+                                alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create Carousel
+                            </h2>
+                        </header>
+                        <!--###### MODAL BOX BODY Part Start######-->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <lightning:input name="id" label="ID:" value="{!v.carousel.id}" readonly="true" />
+                            <lightning:input name="name" label="Name:" value="{!v.carousel.name}" />
+                            <lightning:input type="number" name="transitionInterval" label="Transition Interval (sec):"
+                                value="{!v.carousel.transitionInterval}" />
+                            <lightning:input type="number" name="refreshInterval" label="Refresh Interval (min):"
+                                value="{!v.carousel.refreshInterval}" />
+                        </div>
+                        <!--###### MODAL BOX FOOTER Part Start ######-->
+                        <footer class="slds-modal__footer">
+                            <lightning:button variant="neutral" label="Cancel" title="Cancel"
+                                onclick="{! c.closeCarouselModal }" />
+                            <lightning:button variant="neutral" label="Save" title="Save"
+                                onclick="{! c.saveCarouselModal }" />
+
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+                <!--###### MODAL BOX Part END Here ######-->
+            </aura:if>
+
+            <aura:if isTrue="{!v.isEditItem}">
+                <!--###### MODAL BOX Start######-->
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <!-- ###### MODAL BOX HEADER Start ######-->
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeItemModal }"
+                                alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Item
+                            </h2>
+                        </header>
+                        <!--###### MODAL BOX BODY Part Start######-->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <lightning:input name="id" label="ID:" value="{!v.item.id}" readonly="true" />
+                            <lightning:select name="dashboardName" label="Dashboard:" value="{!v.item.dashboardName}"
+                                onchange="{!c.onDashboardSelect}">
+                                <option value="">-- Select Dashboard --</option>
+                                <aura:iteration items="{!v.dashboardList}" var="db">
+                                    <option value="{!db.name}" selected="{!db.name == v.item.dashboardName}">{!db.label}
+                                    </option>
+                                </aura:iteration>
+                            </lightning:select>
+
+                            <aura:if isTrue="{!v.pageList.length > 0}">
+                                <lightning:select name="pageId" label="Page:" value="{!v.item.pageId}"
+                                    onchange="{!c.onPageSelect}">
+                                    <option value="">-- Select Page --</option>
+                                    <aura:iteration items="{!v.pageList}" var="pg">
+                                        <option value="{!pg.name}" selected="{!pg.name == v.item.pageId}">{!pg.label}
+                                        </option>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </aura:if>
+                            <lightning:textarea name="filter" label="Filter:" value="{!v.item.filter}" />
+                        </div>
+                        <!--###### MODAL BOX FOOTER Part Start ######-->
+                        <footer class="slds-modal__footer">
+                            <lightning:button variant="neutral" label="Cancel" title="Cancel"
+                                onclick="{! c.closeItemModal }" />
+                            <lightning:button variant="neutral" label="Save" title="Save"
+                                onclick="{! c.saveItemModal }" />
+
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+                <!--###### MODAL BOX Part END Here ######-->
+            </aura:if>
+
+            <aura:if isTrue="{!v.isDeleteCarousel}">
+                <!--###### MODAL BOX Start######-->
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <!-- ###### MODAL BOX HEADER Start ######-->
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeDeleteCarouselModal }"
+                                alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Delete Carousel
+                            </h2>
+                        </header>
+                        <!--###### MODAL BOX BODY Part Start######-->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            Are you sure you want to delete carousel: {!v.carousel.name}
+                        </div>
+                        <!--###### MODAL BOX FOOTER Part Start ######-->
+                        <footer class="slds-modal__footer">
+                            <lightning:button variant="neutral" label="Cancel" title="Cancel"
+                                onclick="{! c.closeDeleteCarouselModal }" />
+                            <lightning:button variant="neutral" label="Confirm" title="Confirm"
+                                onclick="{! c.deleteCarouselModal }" />
+
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+                <!--###### MODAL BOX Part END Here ######-->
+            </aura:if>
+
+            <aura:if isTrue="{!v.isDeleteItem}">
+                <!--###### MODAL BOX Start######-->
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <!-- ###### MODAL BOX HEADER Start ######-->
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeDeleteItemModal }"
+                                alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Delete Item
+                            </h2>
+                        </header>
+                        <!--###### MODAL BOX BODY Part Start######-->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            Are you sure you want to delete item: {!v.item.dashboardName}
+                        </div>
+                        <!--###### MODAL BOX FOOTER Part Start ######-->
+                        <footer class="slds-modal__footer">
+                            <lightning:button variant="neutral" label="Cancel" title="Cancel"
+                                onclick="{! c.closeDeleteItemModal }" />
+                            <lightning:button variant="neutral" label="Confirm" title="Confirm"
+                                onclick="{! c.deleteItemModal }" />
+
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+                <!--###### MODAL BOX Part END Here ######-->
+            </aura:if>
+
+        </div>
+    </div>
+</aura:component>

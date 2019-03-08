@@ -63,9 +63,12 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Dashboard_Name__c</fields>
-        <fields>Page_ID__c</fields>
+        <fields>Order__c</fields>
+        <fields>Dashboard_Label__c</fields>
+        <fields>Page_Label__c</fields>
         <relatedList>PSEADashboardCarouselItem__c.PSEADashboardCarousel__c</relatedList>
+        <sortField>Order__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

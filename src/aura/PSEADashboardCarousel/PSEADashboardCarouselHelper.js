@@ -18,7 +18,7 @@
         /////////////////////
         // handle callback //
         /////////////////////
-        action.setCallback(component, function(response) {
+        action.setCallback(component, $A.getCallback(function(response) {
             console.log('getConfig callback...');
             if (response.getState() === 'SUCCESS') {
                 var resp = response.getReturnValue();
@@ -29,7 +29,7 @@
             {
                 self.handleErrors(response.getError());
             }
-        });
+        }));
         
         $A.enqueueAction(action);
       }
