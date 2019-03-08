@@ -41,7 +41,7 @@ Here is demo of the editor in action.
 
 ![alt text](https://github.com/thedges/PSEADashboardCarousel/blob/master/PSEADashboardCarouselConfig.gif "PSEADashboardCarouselConfig Video")
 
-Here is description of the usage for the editor:
+Here are some details for usage of the editor:
 
 ![alt text](https://github.com/thedges/PSEADashboardCarousel/blob/master/PSEADashboardCarouselConfig.png "PSEADashboardCarouselConfig")
 
