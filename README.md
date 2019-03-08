@@ -28,10 +28,31 @@ This component provides ability for a configured list of Einstein Analytic dashb
    * <b>Transition Interval</b> - the time in seconds to transition between dashboard 
    * <b>Refresh Interval</b> - the time in minutes to automatically refresh the carousel with new dashboard data. Note, the refresh does not occur while in 'pause' mode. If a refresh is detected while paused, the carousel component will perform the refresh when use selected 'play' option.
 2. PSEADashboardCarouselItem
+   * <b>Order</b> - integer value to specify the order the items will show in the carousel
+   * <b>Dashboard Label</b> - the human friendly label of the Einstein Analytics dashboard.
    * <b>Dashboard Name</b> - the developer name of the Einstein Analytics dashboard. Currently you need to use Workbench to query your dashboards and get the actual developer name.
+   * <b>Page Label</b> - the human friendly label for the dashboard page
    * <b>Page ID</b> - provide a page id if you want a specific page selected for the dashboard. Access the dashboard JSON to get this page id.
    * <b>Filter</b> - provide a filter string if you want to dynamically filter your dashboard. Currently component only supports one substitution variable. Use the keyword '<<USER_ID>>' in your filter string anywhere that you want the current user id substituted.
 
+<b>To make it easy for setting up carousel configurations based on the two objects above, an editor is provided.</b>
+
+Here is demo of the editor in action.
+
+![alt text](https://github.com/thedges/PSEADashboardCarousel/blob/master/PSEADashboardCarouselConfig.gif "PSEADashboardCarouselConfig Video")
+
+Here is description of the usage for the editor:
+
+![alt text](https://github.com/thedges/PSEADashboardCarousel/blob/master/PSEADashboardCarouselConfig.png "PSEADashboardCarouselConfig")
+
+1. This area provides 4 primary controls which will show based current state of carousel:
+   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/pause.png" height="25"/> pause the carousel
+   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/play.png" height="25"/> un-pause or play the carousel
+   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/launch.png" height="25"/> launch out to a plain Visualforce page (ultimately you can go full screen)
+   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/fullscreen.png" height="25"/> show component in fullscreen mode; primarily used for command center or second monitor
+2. Move the carousel to the left (selecting this automatically pauses the carousel)
+3. Move the carousel to the right (selecting this automatically pauses the carousel)
+4. Dots represent the dashboards in the carousel. Pick on a specific dot to show that dashboard (selecting a slide automatically pauses the carousel)
 
 <b>To use the component, perform the following steps:</b>
 1. Install the component using the '<b>Deploy to Salesforce</b>' button below
