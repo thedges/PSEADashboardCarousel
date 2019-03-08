@@ -41,25 +41,30 @@ Here is demo of the editor in action.
 
 ![alt text](https://github.com/thedges/PSEADashboardCarousel/blob/master/PSEADashboardCarouselConfig.gif "PSEADashboardCarouselConfig Video")
 
-Here is description of the usage for the editor:
+Here are some details for usage of the editor:
 
 ![alt text](https://github.com/thedges/PSEADashboardCarousel/blob/master/PSEADashboardCarouselConfig.png "PSEADashboardCarouselConfig")
 
-1. This area provides 4 primary controls which will show based current state of carousel:
-   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/pause.png" height="25"/> pause the carousel
-   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/play.png" height="25"/> un-pause or play the carousel
-   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/launch.png" height="25"/> launch out to a plain Visualforce page (ultimately you can go full screen)
-   * <img src="https://github.com/thedges/PSEADashboardCarousel/raw/master/fullscreen.png" height="25"/> show component in fullscreen mode; primarily used for command center or second monitor
-2. Move the carousel to the left (selecting this automatically pauses the carousel)
-3. Move the carousel to the right (selecting this automatically pauses the carousel)
-4. Dots represent the dashboards in the carousel. Pick on a specific dot to show that dashboard (selecting a slide automatically pauses the carousel)
+1. At top of the editor, you have following options:
+   * first is for creating new carousel configurations
+   * second is for refreshing the carousel list
+2. For each carousel row in top table, you have following 3 options:
+   * first is to edit the carousel configuration
+   * second is for deleting that carousel configuration
+   * third is to retrieve the list of carousel items for that carousel configuration. This will fill out the bottom table.
+3. The bottom section of editor is for configuring the items (i.e. dashboards) to show in the carousel. This are provides following 2 options:
+   * first is for creating new carousel items
+   * second is used to send the sort order to the database. Normally order is set as you interact with the editor but if you entered data directly in to the objects using standard screens, you can commit the order to database using this option.
+4. For each item row in bottom table, you have following 4 options:
+   * first is ability to edit the item configuration
+   * second is for deleting that item configuration
+   * third is to move that item down in the sort order
+   * fourth is to move that item up in the sort order
 
 <b>To use the component, perform the following steps:</b>
 1. Install the component using the '<b>Deploy to Salesforce</b>' button below
 2. Assign the '<b>PSEADashboardCarousel</b>' permission set to the users that will utilize the component
-3. Navigate to the <b>PSEADashboardCarousel</b> tab and create a carousel configuration. 
-   * First create a PSEADashboardCarousel record to define your configuration
-   * Next create 1 or more PSEADashboardCarouselItem records to specify the dashboards to include in your carousel
+3. Navigate to the <b>PSEADashboardCarousel Config</b> tab and create a carousel configuration. See video and configuration editor usage above.
 4. For the page that you want to add the carousel component to, edit the page and use Lightning App Builder to add the component to the page. For the component configuration, select the configuration name you provided in previous step and specify a height for the component. Save the page and your component is ready. 
 
 <b>WARNINGS:</b>
