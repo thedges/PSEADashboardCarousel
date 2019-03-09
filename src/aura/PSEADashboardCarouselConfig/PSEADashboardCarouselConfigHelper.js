@@ -85,6 +85,20 @@
                 dashboardList.push({ "label": dashboard.label, "name": dashboard.name, "id": dashboard.id });
             });
 
+            if (dashboardList != null) dashboardList.sort(function(a,b) 
+            { if (a.label > b.label)
+                {
+                  return 1;
+                } 
+                else if (b.label > a.label)
+                {
+                  return -1;
+                }
+                {
+                   return 0;
+                }
+            });
+
             console.log('dashboardList=' + JSON.stringify(dashboardList));
             component.set("v.dashboardList", dashboardList);
 
@@ -114,6 +128,21 @@
                         }
                     });
                 }
+
+                if (pageList != null) pageList.sort(function(a,b) 
+                { if (a.label > b.label)
+                    {
+                      return 1;
+                    } 
+                    else if (b.label > a.label)
+                    {
+                      return -1;
+                    }
+                    {
+                       return 0;
+                    }
+                });
+
                 console.log('pageList=' + JSON.stringify(pageList));
                 component.set("v.pageList", pageList);
             }

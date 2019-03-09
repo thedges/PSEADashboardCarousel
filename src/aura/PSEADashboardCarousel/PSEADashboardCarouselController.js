@@ -23,8 +23,7 @@
             
             if (window.location.pathname.startsWith('/apex')) component.set("v.fullscreen", true);
             
-            component.set('v.flkty', flkty);
-            window.flkty = flkty;
+
             
             flkty.on('settle', function (event, index) {
                 flkty.options.autoPlay = ref;
@@ -85,6 +84,9 @@
                 */
                 
             }, config.refreshInterval*60*1000);
+        
+            component.set('v.flkty', flkty);
+            //window.flkty = flkty;
         }
     },
     onLoad: function (component, event, helper) {
@@ -95,7 +97,9 @@
         window.open('/apex/PSEADashboardCarouselVF?configId=' + config.configId, '_blank');
     },
     playPlayer: function (component, event, helper) {
-        window.flkty.playPlayer();
+        var flkty = component.get('v.flkty');
+        flkty['playPlayer']();
+        //window.flkty.playPlayer();
         component.set("v.playing", true);
 
         if (component.get("v.refreshOnPause"))
@@ -105,7 +109,9 @@
         }
     },
     stopPlayer: function (component, event, helper) {
-        window.flkty.pausePlayer();
+        var flkty = component.get('v.flkty');
+        flkty.pausePlayer();
+        //window.flkty.pausePlayer();
         component.set("v.playing", false);
     },
     closeError: function (component, event, helper) {

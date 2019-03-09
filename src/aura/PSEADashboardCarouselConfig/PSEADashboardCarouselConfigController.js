@@ -139,6 +139,8 @@
 	},
 	handleItemAdd: function (component, event, helper) {
 		component.set("v.item", { "id": null, "carouselId": component.get('v.carousel').id, "dashboardLabel": null, "dashboardName": null, "pageLabel": null, "pageId": null, "filter": null });
+		component.set("v.pageList", null);
+		component.set("v.pageId", null);
 		helper.showEditItem(component);
 	},
 	handleItemEdit: function (component, event, helper) {
