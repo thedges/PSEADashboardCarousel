@@ -98,7 +98,7 @@
                    return 0;
                 }
             });
-
+            
             console.log('dashboardList=' + JSON.stringify(dashboardList));
             component.set("v.dashboardList", dashboardList);
 
@@ -128,7 +128,8 @@
                         }
                     });
                 }
-
+                
+                
                 if (pageList != null) pageList.sort(function(a,b) 
                 { if (a.label > b.label)
                     {
@@ -142,7 +143,7 @@
                        return 0;
                     }
                 });
-
+                
                 console.log('pageList=' + JSON.stringify(pageList));
                 component.set("v.pageList", pageList);
             }
@@ -377,8 +378,16 @@
         var self = this;
         var itemList = component.get("v.itemList");
 
+        component.set("v.pageList", null);
+		component.set("v.pageId", null);
+        
         component.set("v.item", itemList[itemIndex]);
         component.set("v.dashboardName", null);
+        
+        if (itemList[itemIndex].pageId != null)
+        {
+            self.getPageList(component, itemList[itemIndex].dashboardName);
+        }
 
         /*
         var itemList = component.get("v.itemList");

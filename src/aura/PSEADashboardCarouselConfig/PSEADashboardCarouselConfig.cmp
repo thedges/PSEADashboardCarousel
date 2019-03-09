@@ -2,12 +2,8 @@
     implements="force:appHostable,flexipage:availableForAllPageTypes" access="global">
 
     <aura:attribute name="carouselList" type="List" />
-    <!--
-    <aura:attribute name="carouselId" type="String" />
-    -->
     <aura:attribute name="carousel" type="Object" />
     <aura:attribute name="itemList" type="List" />
-    <aura:attribute name="itemId" type="String" />
     <aura:attribute name="item" type="Object" />
 
     <aura:attribute name="dashboardList" type="List" />
@@ -83,8 +79,10 @@
 
             <div class="section-label slds-p-top_large">
                 Carousel Items [{!v.carousel.name}]:
-                <lightning:buttonIcon iconName="utility:new" variant="bare" onclick="{! c.handleItemAdd }"
+                <aura:if isTrue="{!v.carousel != null}">
+                  <lightning:buttonIcon iconName="utility:new" variant="bare" onclick="{! c.handleItemAdd }"
                     alternativeText="Create new carousel item" />
+                </aura:if>
                 <aura:if isTrue="{!and(v.itemList != null, v.itemList.length > 0)}">
                   <lightning:buttonIcon iconName="utility:richtextnumberedlist" variant="bare"
                       onclick="{! c.handleItemSort }" alternativeText="Set the order of items as defined in the table" />

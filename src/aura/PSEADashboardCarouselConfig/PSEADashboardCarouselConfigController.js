@@ -129,7 +129,7 @@
 		//helper.getItemList(component);
 	},
 	handleCarouselRefresh: function (component, event, helper) {
-		helper.getCarouselList(component, true);
+		helper.getCarouselList(component, true, true);
 	},
 	closeCarouselModal: function (component, event, helper) {
 		helper.hideEditCarousel(component);
