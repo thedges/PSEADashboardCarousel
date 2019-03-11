@@ -65,7 +65,7 @@ Here are some details for usage of the editor:
 1. Install the component using the '<b>Deploy to Salesforce</b>' button below
 2. Assign the '<b>PSEADashboardCarousel</b>' permission set to the users that will utilize the component
 3. Navigate to the <b>PSEADashboardCarousel Config</b> tab and create a carousel configuration. See video and configuration editor usage above.
-4. For the page that you want to add the carousel component to, edit the page and use Lightning App Builder to add the component to the page. For the component configuration, select the configuration name you provided in previous step and specify a height for the component. Save the page and your component is ready. 
+4. For the page that you want to add the carousel component to, edit the page and use Lightning App Builder to add the <b>PSEADashboardCarousel</b> component to the page. For the component configuration, select the configuration name you provided in previous step and specify a height for the component. Save the page and your component is ready. 
 
 <b>WARNINGS:</b>
 * If you are using a dashboard that has multiple pages, you need to specify the page ID for each PSEADashboardCarouselItem record entry. If you do not specify page ID on each record, then the dashboard will show the page of the last one shown in the carousel.
