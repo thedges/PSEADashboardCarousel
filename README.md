@@ -1,4 +1,7 @@
 # PSEADashboardCarousel
+
+THIS SOFTWARE IS COVERED BY [THIS DISCLAIMER](https://raw.githubusercontent.com/thedges/Disclaimer/master/disclaimer.txt).
+
 This component provides ability for a configured list of Einstein Analytic dashboards to be shown in a carousel. The carousel provides automatic rotation of dashboards on a configurable transition interval (seconds). This component utilizes the [Flickity](https://flickity.metafizzy.co/) javascript library for the primary carousel functionality. Here is video of the component in action:
 
 ![alt text](https://github.com/thedges/PSEADashboardCarousel/blob/master/PSEADashboardCarousel.gif "PSEADashboardCarousel Video")
