@@ -23,9 +23,14 @@
             
             if (window.location.pathname.startsWith('/apex')) component.set("v.fullscreen", true);
             
-
-            
             flkty.on('settle', function (event, index) {
+                
+                if (index === undefined)
+                {
+                    index = flkty.selectedIndex;
+                }
+                console.log('settle indx=' + index);
+                
                 flkty.options.autoPlay = ref;
                 if (flkty.player.state === 'playing') {
                     component.set('v.playing', true);
@@ -34,6 +39,7 @@
                     component.set('v.playing', false);
                 }
 
+                /*
                 var indx = flkty.selectedIndex;
                 console.log('settle indx=' + indx);
                 var config = component.get('v.config');
@@ -52,15 +58,40 @@
                     evt.fire();
                   }
                 }
+                */
             });
             
             flkty.on('select', function (event, index) {
+                if (index === undefined)
+                {
+                    index = flkty.selectedIndex;
+                }
+                console.log('select indx=' + index);
+                
                 flkty.options.autoPlay = ref;
                 if (flkty.player.state === 'playing') {
                     component.set('v.playing', true);
                 }
                 else if (flkty.player.state === 'paused' || flkty.player.state === 'stopped') {
                     component.set('v.playing', false);
+                }
+                
+                var config = component.get('v.config');
+                if (config != null && config.items != null && config.items.length > 0)
+                {
+                  var item = config.items[index];
+
+                  if (item.pageId != null)
+                  {
+                    console.log('select db=' + item.dashboardName + ' pageId=' + item.pageId);
+                    var evt = $A.get('e.wave:pageChange');
+        
+                    var evtParams = {};
+                    evtParams['pageid'] = item.pageId;
+                    evtParams['devName'] = item.dashboardName;
+                    evt.setParams(evtParams);
+                    evt.fire();
+                  }
                 }
             });
 
